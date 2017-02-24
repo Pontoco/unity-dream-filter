@@ -17,14 +17,15 @@ namespace AssemblyCSharpfirstpass
         [Range(0.2f, 10f)]
         public float noiseCoordScale = 1f;
 
-        [Range(0f, 1f)]
-        public float quantization = 0.05f;
+        [Range(0f, 50f)]
+        public float quantization = 2f;
 
         [Range(0f, 90f)]
         public float sampleAngleDegrees = 0f;
 
         // Called by camera to apply image effect
         void OnRenderImage (RenderTexture source, RenderTexture destination) {
+            // TODO: Try downsampling original image to similar resolution as quatization grid.
             material.SetTexture("_NoiseTex", noiseTexture);
             material.SetFloat("_NoiseMean", noiseMean);
             material.SetFloat("_NoiseMapScale", noiseMapScale);
